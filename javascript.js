@@ -16,6 +16,7 @@ function initializeEAS(cellsWide, cellsHigh) {
             cell.id = "cell";
             cell.style.height = cellHeight + "px";
             cell.style.width = cellWidth + "px";
+            cell.addEventListener("mouseenter", () => adjustColor(cell));
             row.appendChild(cell);
         }
         container.appendChild(row);
@@ -46,6 +47,10 @@ function deleteBoard() {
     while (container.firstChild) {
         container.firstChild.remove();
     }
+}
+
+function adjustColor(element) {
+    element.style.backgroundColor = "black";
 }
 
 
