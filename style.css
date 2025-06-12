@@ -1,8 +1,9 @@
 body {
-    background-color: aqua;
+    background-color:bisque;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 button {
@@ -11,12 +12,15 @@ button {
 
 .explanation {
     margin-bottom: 5px;
+    width: 400px;
 }
 
 #container {
     background-color: white;
     display: flex;
     flex-direction: column;
+    border: 40px, solid, red;
+    border-radius: 30px;
 }
 
 #row {
@@ -25,4 +29,5 @@ button {
 
 #cell {
     background-color: rgb(50, 50, 50);
+    opacity: 0;
 }

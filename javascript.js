@@ -50,7 +50,11 @@ function deleteBoard() {
 }
 
 function adjustColor(element) {
-    element.style.backgroundColor = "black";
+    let curOpacity = Number(element.style.opacity);
+    if (curOpacity == 1) {
+        return;
+    }
+    element.style.opacity = String(curOpacity + 0.1);
 }
 
 
