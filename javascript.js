@@ -13,7 +13,11 @@ function initializeEAS(cellsWide, cellsHigh) {
         // create cols
         for (let j = 0; j < cellsWide; j++) {
             const cell = document.createElement("div");
-            cell.id = "cell";
+            if (mode === "grey") {
+                cell.id = "cell-grey";
+            } else {
+                cell.id = "cell-rainbow";
+            }
             cell.style.height = cellHeight + "px";
             cell.style.width = cellWidth + "px";
             cell.addEventListener("mouseenter", () => adjustColor(cell));
@@ -50,21 +54,42 @@ function deleteBoard() {
 }
 
 function adjustColor(element) {
-    let curOpacity = Number(element.style.opacity);
-    if (curOpacity == 1) {
-        return;
+    if (mode === "grey") {
+        let curOpacity = Number(element.style.opacity);
+        if (curOpacity == 1) {
+            return;
+        }
+        element.style.opacity = String(curOpacity + 0.1);
+    } else {
+        // Must be rainbow as of right now
+        element.style.backgroundColor = rainbowColors[(Math.round(Math.random() * 100) % rainbowColors.length)];
     }
-    element.style.opacity = String(curOpacity + 0.1);
+    
 }
 
+function initializeGreyscale() {
+    mode = "grey";
+    deleteBoard();
+    initializeEAS(32, 24);
+}
 
-
-
-
-
+function initializeRainbow() {
+    mode = "rainbow";
+    deleteBoard();
+    initializeEAS(32, 24);
+}
 
 // --------------------------------
-initializeEAS(32, 24);
+let mode = "";
+initializeGreyscale();
 
-const gridButton = document.querySelector("button");
+rainbowColors = ["red", "orange", "green", "blue", "pink", "purple"];
+
+const gridButton = document.querySelector(".redraw");
 gridButton.addEventListener("click", updateGridLayout);
+
+const greyButton = document.querySelector(".greyscale");
+greyButton.addEventListener("click", initializeGreyscale);
+
+const rainbowButton = document.querySelector(".rainbow");
+rainbowButton.addEventListener("click", initializeRainbow);

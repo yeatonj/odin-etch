@@ -27,7 +27,11 @@ button {
     display: flex;
 }
 
-#cell {
+#cell-grey {
     background-color: rgb(50, 50, 50);
     opacity: 0;
+}
+
+#cell-rainbow {
+    background-color: white;
 }
