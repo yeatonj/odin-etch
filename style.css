@@ -7,4 +7,15 @@ body {
 
 #container {
     background-color: bisque;
+    display: flex;
+    flex-direction: column;
+}
+
+#row {
+    display: flex;
+}
+
+#cell {
+    background-color: bisque;
+    border: 1px solid black;
 }

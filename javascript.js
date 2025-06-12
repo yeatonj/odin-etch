@@ -1,12 +1,25 @@
-const CONTAINER_HEIGHT_TARGET = 240;
+const CONTAINER_HEIGHT_TARGET = 360;
 const CONTAINER_WIDTH_TARGET = 480;
 
 function initializeEAS(cellsWide, cellsHigh) {
-    let actualWidth = Math.round(CONTAINER_WIDTH_TARGET / cellsWide) * cellsWide;
-    let actualHeight = Math.round(CONTAINER_HEIGHT_TARGET / cellsHigh) * cellsHigh;
+    let cellWidth = Math.round(CONTAINER_WIDTH_TARGET / cellsWide);
+    let cellHeight = Math.round(CONTAINER_HEIGHT_TARGET / cellsHigh);
     const container = document.querySelector("#container");
-    container.style.height = actualHeight + "px";
-    container.style.width = actualWidth + "px";
+    
+    // Create row
+    for (let i = 0; i < cellsHigh; i++) {
+        const row = document.createElement("div");
+        row.id = "row";
+        // create cols
+        for (let j = 0; j < cellsWide; j++) {
+            const cell = document.createElement("div");
+            cell.id = "cell";
+            cell.style.height = cellHeight + "px";
+            cell.style.width = cellWidth + "px";
+            row.appendChild(cell);
+        }
+        container.appendChild(row);
+    }
 }
 
 
@@ -16,4 +29,4 @@ function initializeEAS(cellsWide, cellsHigh) {
 
 
 // --------------------------------
-initializeEAS(16, 32);
+initializeEAS(32, 24);
