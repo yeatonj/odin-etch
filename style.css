@@ -5,6 +5,14 @@ body {
     align-items: center;
 }
 
+button {
+    margin-bottom: 20px;
+}
+
+.explanation {
+    margin-bottom: 5px;
+}
+
 #container {
     background-color: bisque;
     display: flex;

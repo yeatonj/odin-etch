@@ -22,6 +22,32 @@ function initializeEAS(cellsWide, cellsHigh) {
     }
 }
 
+function updateGridLayout() {
+    let widthIn = prompt("How many columns would you like (1-100)?");
+    let width = Number(widthIn);
+    if (!Number.isInteger(width) || width < 1 || width > 100) {
+        alert(`${widthIn} is not a valid input.`);
+        return;
+    }
+    let heightIn = prompt("How many rows would you like (1-100)?");
+    let height = Number(heightIn);
+    if (!Number.isInteger(height) || height < 1 || height > 100) {
+        alert(`${heightIn} is not a valid input.`);
+        return;
+    }
+    // Delete current board
+    deleteBoard();
+
+    initializeEAS(width, height);
+}
+
+function deleteBoard() {
+    const container = document.querySelector("#container");
+    while (container.firstChild) {
+        container.firstChild.remove();
+    }
+}
+
 
 
 
@@ -30,3 +56,6 @@ function initializeEAS(cellsWide, cellsHigh) {
 
 // --------------------------------
 initializeEAS(32, 24);
+
+const gridButton = document.querySelector("button");
+gridButton.addEventListener("click", updateGridLayout);
