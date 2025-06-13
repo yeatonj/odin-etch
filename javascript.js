@@ -1,9 +1,7 @@
-const CONTAINER_HEIGHT_TARGET = 360;
-const CONTAINER_WIDTH_TARGET = 480;
+const CONTAINER_HEIGHT = 360;
+const CONTAINER_WIDTH = 480;
 
 function initializeEAS(cellsWide, cellsHigh) {
-    let cellWidth = Math.round(CONTAINER_WIDTH_TARGET / cellsWide);
-    let cellHeight = Math.round(CONTAINER_HEIGHT_TARGET / cellsHigh);
     const container = document.querySelector("#container");
     
     // Create row
@@ -18,8 +16,6 @@ function initializeEAS(cellsWide, cellsHigh) {
             } else {
                 cell.id = "cell-rainbow";
             }
-            cell.style.height = cellHeight + "px";
-            cell.style.width = cellWidth + "px";
             cell.addEventListener("mouseenter", () => adjustColor(cell));
             row.appendChild(cell);
         }
@@ -81,7 +77,13 @@ function initializeRainbow() {
 
 // --------------------------------
 let mode = "";
+const container = document.querySelector("#container");
+container.style.height = CONTAINER_HEIGHT + "px";
+container.style.width = CONTAINER_WIDTH + "px";
+
 initializeGreyscale();
+
+
 
 rainbowColors = ["red", "orange", "green", "blue", "pink", "purple"];
 

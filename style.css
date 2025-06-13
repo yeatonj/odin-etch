@@ -25,13 +25,16 @@ button {
 
 #row {
     display: flex;
+    flex: auto;
 }
 
 #cell-grey {
     background-color: rgb(50, 50, 50);
     opacity: 0;
+    flex: auto;
 }
 
 #cell-rainbow {
     background-color: white;
+    flex: auto;
 }
